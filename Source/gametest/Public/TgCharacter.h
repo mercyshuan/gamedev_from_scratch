@@ -21,13 +21,17 @@ public:
 
 protected:
 	//这一部分包括构建类的组件，如定义的相机，弹簧臂组件等
+	UPROPERTY(VisibleAnywhere)
 	USpringArmComponent* SpringArmComp;
 
+	UPROPERTY(VisibleAnywhere)
 	UCameraComponent* CameraComp;
 
 
 	// Called when the game starts or when spawned
 	virtual void BeginPlay() override;
+
+	void MoveForward(float Value);
 
 public:	
 	// Called every frame

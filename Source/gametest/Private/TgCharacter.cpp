@@ -25,6 +25,11 @@ void ATgCharacter::BeginPlay()
 	
 }
 
+void ATgCharacter::MoveForward(float Value)
+{
+	AddMovementInput(GetActorForwardVector(), Value); //沿着任意向量移动角色，GetActorForwardVector 获取角色向前方向的向量，Value加权值
+}
+
 // Called every frame
 void ATgCharacter::Tick(float DeltaTime)
 {
@@ -37,5 +42,7 @@ void ATgCharacter::SetupPlayerInputComponent(UInputComponent* PlayerInputCompone
 {
 	Super::SetupPlayerInputComponent(PlayerInputComponent);
 
+	PlayerInputComponent->BindAxis("MoveForward",this, &ATgCharacter::MoveForward);
+	PlayerInputComponent->BindAxis("Turn", this, &APawn::AddControllerYawInput);
 }
 
